@@ -372,7 +372,8 @@ schoolSchema.statics.addPersonnel = function (req) {
         });
         if (personnel_id) throw Error("personnel already exist");
         req.body.salt = crypto.randomBytes(Math.ceil(16)).toString("hex");
-        req.body.password = crypto.randomBytes(Math.ceil(8)).toString("hex");
+        // req.body.password = crypto.randomBytes(Math.ceil(8)).toString("hex");
+        req.body.password = '123456';
         req.body.hash_password = crypto
           .pbkdf2Sync(req.body.password, req.body.salt, 1000, 64, `sha512`)
           .toString(`hex`);
@@ -433,8 +434,8 @@ schoolSchema.statics.addStudent = function (req) {
         });
         if (student_id) throw Error("personnel already exist");
         req.body.salt = crypto.randomBytes(Math.ceil(16)).toString("hex");
-        req.body.password = crypto.randomBytes(Math.ceil(6)).toString("hex");
-
+        // req.body.password = crypto.randomBytes(Math.ceil(6)).toString("hex");
+        req.body.password = '123456';
         req.body.hash_password = crypto
           .pbkdf2Sync(req.body.password, req.body.salt, 1000, 64, `sha512`)
           .toString(`hex`);
